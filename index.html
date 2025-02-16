@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(45deg, #ff6b6b, #f06595, #6a4c93);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #fact-container {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="fact-container">
+        <p id="fact"></p>
+    </div>
+    <button id="new-fact-btn">Show Random Fact</button>
+    <script>
+        const facts = [
+            "Mars is the fourth planet from the Sun in our solar system.",
+            "Mars is often referred to as the 'Red Planet' due to its reddish appearance, which is caused by iron oxide (rust) on its surface.",
+            "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high.",
+            "The planet has two small moons, Phobos and Deimos, which are thought to be captured asteroids.",
+            "A day on Mars, known as a sol, is approximately 24.6 hours long.",
+            "Mars has a very thin atmosphere composed mostly of carbon dioxide, with traces of nitrogen and argon.",
+            "Mars has the largest dust storms in the solar system, which can cover the entire planet and last for months.",
+            "The surface gravity on Mars is about 38% that of Earth's, meaning you would weigh less on Mars.",
+            "Mars has polar ice caps made of water and dry ice (frozen carbon dioxide) that grow and recede with the changing seasons.",
+            "Evidence suggests that Mars once had liquid water on its surface and may have supported microbial life in the past."
+        ];
+
+        document.getElementById('new-fact-btn').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factElement = document.getElementById('fact');
+            factElement.textContent = facts[randomIndex];
+            factElement.style.animation = 'none';
+            setTimeout(() => factElement.style.animation = '', 10);
+        });
+    </script>
+</body>
+</html>
